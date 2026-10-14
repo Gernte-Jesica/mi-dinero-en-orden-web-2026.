@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#a83f70"><title>Mi Dinero en Orden</title>
+<style>
+:root{--pink:#a83f70;--pink2:#f6dce8;--cream:#fffaf7;--ink:#332832;--muted:#80737d;--green:#27795e;--red:#b44c56;--line:#eadfe5;--card:#fff}
+*{box-sizing:border-box}body{margin:0;background:#f8f2f5;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1040px;margin:auto;min-height:100vh;padding-bottom:86px}.top{background:linear-gradient(135deg,#a83f70,#c76b93);color:#fff;padding:24px 20px 22px;border-radius:0 0 28px 28px}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-size:1.3rem;font-weight:800;letter-spacing:-.4px}.month{margin-top:20px;font-size:.9rem;opacity:.9}.balance{font-size:2.2rem;font-weight:800;margin:4px 0 14px;letter-spacing:-1px}.summary{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sum{background:#ffffff20;border:1px solid #ffffff35;border-radius:16px;padding:12px}.sum small{display:block;opacity:.85}.sum strong{display:block;font-size:1.05rem;margin-top:3px}.content{padding:18px 14px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:4px 0 12px}.sectionhead h2{font-size:1.08rem;margin:0}.btn{border:0;border-radius:12px;background:var(--pink);color:#fff;padding:10px 14px;font-weight:700}.btn.secondary{background:var(--pink2);color:#85345b}.btn.light{background:#fff;color:var(--pink);border:1px solid #eed0de}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 4px 14px #54213a08}.metric{font-size:1.35rem;font-weight:800;margin-top:6px}.muted{color:var(--muted);font-size:.84rem}.pill{display:inline-block;border-radius:99px;background:#f7e7ee;color:#91375f;padding:4px 9px;font-size:.75rem;font-weight:700}.bar{height:8px;background:#f0e5eb;border-radius:99px;overflow:hidden;margin-top:9px}.bar span{display:block;height:100%;background:var(--pink);border-radius:99px}.tabs{position:fixed;bottom:0;left:0;right:0;z-index:5;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;padding:8px 6px calc(8px + env(safe-area-inset-bottom));gap:3px}.tabs button{flex:1;max-width:180px;border:0;background:transparent;color:var(--muted);padding:8px 2px;border-radius:12px;font-size:.74rem}.tabs button span{display:block;font-size:1.2rem;margin-bottom:2px}.tabs button.active{color:var(--pink);background:#f9eaf1;font-weight:800}.panel{display:none}.panel.active{display:block}.list{display:flex;flex-direction:column;gap:9px}.item{display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:14px}.ico{width:40px;height:40px;border-radius:13px;background:#f8e7ef;display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}.itemmain{flex:1;min-width:0}.itemmain strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.amount{font-weight:800;white-space:nowrap}.amount.expense{color:var(--red)}.amount.income{color:var(--green)}.empty{text-align:center;padding:26px;color:var(--muted)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:.82rem;color:var(--muted);font-weight:700}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px;background:#fff;color:var(--ink)}.actions{display:flex;gap:8px;margin-top:12px}.actions button{flex:1}.smallbtn{border:0;background:transparent;color:var(--pink);font-weight:700;padding:6px}.categoryrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.categoryrow:last-child{border:0}.note{background:#fff3db;color:#775723;border-radius:13px;padding:12px;font-size:.85rem;line-height:1.4}.toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);background:#2e2a30;color:white;padding:10px 16px;border-radius:12px;display:none;z-index:10;box-shadow:0 5px 25px #0002}.hidden{display:none!important}.monthselect{background:#ffffff24;color:#fff;border:1px solid #ffffff55;border-radius:10px;padding:7px}.monthselect option{color:#333}.foot{font-size:.75rem;color:var(--muted);text-align:center;padding:20px 8px}
+@media(min-width:700px){.content{padding:24px}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.summary{max-width:500px}.top{padding:28px 30px}.balance{font-size:2.7rem}.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}}
+@media(max-width:420px){.grid{gap:8px}.card{padding:12px}.metric{font-size:1.15rem}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.balance{font-size:1.9rem}}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mi Dinero en Orden">
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="topline"><div><div class="brand">🌸 Mi Dinero en Orden</div><div style="font-size:.82rem;opacity:.86">Tus cuentas, claras y bajo control</div></div><button class="btn light" id="exportBtn">Exportar</button></div>
+ <div class="month">RESUMEN DEL MES <select id="monthSelect" class="monthselect" aria-label="Seleccionar mes"></select></div>
+ <div class="balance" id="balance">0,00 €</div>
+ <div class="summary"><div class="sum"><small>↗ Ingresos</small><strong id="incomeTotal">0,00 €</strong></div><div class="sum"><small>↘ Gastos</small><strong id="expenseTotal">0,00 €</strong></div></div>
+</header>
+<main class="content">
+<section id="home" class="panel active">
+ <div class="sectionhead"><h2>Tu mes de un vistazo</h2><button class="btn" id="quickAdd">+ Añadir</button></div>
+ <div class="grid">
+  <div class="card"><div class="muted">Disponible del mes</div><div class="metric" id="available">0,00 €</div><div class="muted">Ingresos menos gastos registrados</div></div>
+  <div class="card"><div class="muted">Gastos registrados</div><div class="metric" id="countExpenses">0</div><div class="muted">movimientos este mes</div></div>
+  <div class="card"><div class="muted">Deuda pendiente</div><div class="metric" id="debtTotal">0,00 €</div><div class="muted">suma de tus deudas</div></div>
+  <div class="card"><div class="muted">Objetivo de ahorro</div><div class="metric" id="goalTotal">0,00 €</div><div class="muted">objetivos activos</div></div>
+ </div>
+ <div class="two-col" style="margin-top:14px">
+  <div class="card"><div class="sectionhead"><h2>Gastos por categoría</h2></div><div id="categoryBreakdown"></div></div>
+  <div class="card"><div class="sectionhead"><h2>Últimos movimientos</h2><button class="smallbtn" data-goto="transactions">Ver todos</button></div><div class="list" id="recent"></div></div>
+ </div>
+ <div class="note" style="margin-top:14px">💡 Consejo: registra los gastos cuando ocurran. Esta versión guarda los datos en este dispositivo; exporta una copia de vez en cuando.</div>
+</section>
+<section id="transactions" class="panel">
+ <div class="sectionhead"><h2>Movimientos</h2><button class="btn" id="newMovement">+ Añadir</button></div>
+ <div class="card hidden" id="movementFormCard">
+  <h3 style="margin:0 0 14px">Nuevo movimiento</h3>
+  <form id="movementForm"><div class="formgrid">
+   <div class="field"><label for="type">Tipo</label><select id="type"><option value="expense">Gasto</option><option value="income">Ingreso</option></select></div>
+   <div class="field"><label for="amount">Importe (€)</label><input id="amount" type="number" min="0.01" step="0.01" required placeholder="0,00"></div>
+   <div class="field"><label for="category">Categoría</label><select id="category"></select></div>
+   <div class="field"><label for="date">Fecha</label><input id="date" type="date" required></div>
+   <div class="field full"><label for="description">Descripción</label><input id="description" maxlength="80" placeholder="Ej. Compra supermercado"></div>
+  </div><div class="actions"><button type="button" class="btn secondary" id="cancelMovement">Cancelar</button><button class="btn" type="submit">Guardar movimiento</button></div></form>
+ </div>
+ <div class="list" id="allTransactions"></div>
+</section>
+<section id="debts" class="panel">
+ <div class="sectionhead"><h2>Mis deudas</h2><button class="btn" id="newDebt">+ Añadir</button></div>
+ <div class="card hidden" id="debtFormCard"><h3 style="margin-top:0">Nueva deuda</h3><form id="debtForm"><div class="formgrid">
+ <div class="field full"><label for="debtName">Nombre</label><input id="debtName" required maxlength="70" placeholder="Ej. Préstamo personal"></div>
+ <div class="field"><label for="debtAmount">Pendiente (€)</label><input id="debtAmount" type="number" min="0.01" step="0.01" required></div>
+ <div class="field"><label for="debtPayment">Pago mensual (€)</label><input id="debtPayment" type="number" min="0" step="0.01" value="0"></div>
+ </div><div class="actions"><button type="button" class="btn secondary" id="cancelDebt">Cancelar</button><button class="btn" type="submit">Guardar deuda</button></div></form></div>
+ <div class="grid" id="debtList"></div>
+ <div class="note" style="margin-top:12px">Los pagos se registran por separado. Al pagar una cuota, registra también el movimiento de gasto para que el presupuesto mensual cuadre.</div>
+</section>
+<section id="goals" class="panel">
+ <div class="sectionhead"><h2>Mis objetivos</h2><button class="btn" id="newGoal">+ Añadir</button></div>
+ <div class="card hidden" id="goalFormCard"><h3 style="margin-top:0">Nuevo objetivo</h3><form id="goalForm"><div class="formgrid">
+ <div class="field full"><label for="goalName">Nombre del objetivo</label><input id="goalName" required maxlength="70" placeholder="Ej. Fondo de emergencia"></div>
+ <div class="field"><label for="goalTarget">Cantidad objetivo (€)</label><input id="goalTarget" type="number" min="1" step="0.01" required></div>
+ <div class="field"><label for="goalSaved">Ya ahorrado (€)</label><input id="goalSaved" type="number" min="0" step="0.01" value="0" required></div>
+ </div><div class="actions"><button type="button" class="btn secondary" id="cancelGoal">Cancelar</button><button class="btn" type="submit">Guardar objetivo</button></div></form></div>
+ <div class="list" id="goalList"></div>
+</section>
+<section id="settings" class="panel">
+ <div class="sectionhead"><h2>Configuración y datos</h2></div>
+ <div class="card"><h3 style="margin-top:0">Copia de seguridad</h3><p class="muted">Exporta tus movimientos, deudas y objetivos a un archivo JSON para guardarlos o restaurarlos más adelante.</p><div class="actions"><button class="btn" id="exportBtn2">Exportar datos</button><button class="btn secondary" id="importBtn">Importar copia</button></div><input type="file" id="importFile" accept=".json,application/json" class="hidden"></div>
+ <div class="card" style="margin-top:12px"><h3 style="margin-top:0">Privacidad</h3><p class="muted">Este prototipo guarda los datos localmente en el navegador de este dispositivo. No se envían a un servidor. Si borras los datos del navegador, podrías perderlos: exporta copias de seguridad.</p></div>
+ <div class="card" style="margin-top:12px"><h3 style="margin-top:0">Restablecer datos</h3><p class="muted">Borra todos los movimientos, deudas y objetivos de este prototipo.</p><button class="btn secondary" id="resetBtn">Borrar todos los datos</button></div>
+ <div class="foot">Mi Dinero en Orden · Prototipo MVP · Versión 0.1</div>
+</section>
+</main>
+<nav class="tabs">
+ <button class="active" data-tab="home"><span>⌂</span>Inicio</button>
+ <button data-tab="transactions"><span>↕</span>Movimientos</button>
+ <button data-tab="debts"><span>◈</span>Deudas</button>
+ <button data-tab="goals"><span>☆</span>Objetivos</button>
+ <button data-tab="settings"><span>⚙</span>Más</button>
+</nav>
+</div><div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+const euro=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(Number(n)||0);
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const monthKey=d=>String(d).slice(0,7);
+const cats={expense:['Alimentación','Transporte','Vivienda','Suministros','Seguros','Salud','Higiene y limpieza','Tabaco','Ocio','Niños y colegio','Regalos y celebraciones','Deudas','Suscripciones','Otros'],income:['Nómina o prestación','Ventas','Trabajo extra','Ayuda familiar','Otros ingresos']};
+let state={transactions:[],debts:[],goals:[]};
+try{const saved=localStorage.getItem('mdo_v1');if(saved)state={...state,...JSON.parse(saved)}}catch(e){}
+let selectedMonth=monthKey(today());
+function save(){localStorage.setItem('mdo_v1',JSON.stringify(state));render()}
+function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2200)}
+function moneyNum(v){return Math.round((Number(v)+Number.EPSILON)*100)/100}
+function showTab(tab){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===tab));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>showTab(b.dataset.goto));
+function txMonth(){return state.transactions.filter(t=>monthKey(t.date)===selectedMonth)}
+function render(){
+ const tx=txMonth(),income=tx.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0),expense=tx.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+ $('balance').textContent=euro(income-expense);$('incomeTotal').textContent=euro(income);$('expenseTotal').textContent=euro(expense);$('available').textContent=euro(income-expense);$('countExpenses').textContent=tx.filter(t=>t.type==='expense').length;$('debtTotal').textContent=euro(state.debts.reduce((s,d)=>s+d.amount,0));$('goalTotal').textContent=euro(state.goals.reduce((s,g)=>s+Math.max(0,g.target-g.saved),0));
+ const breakdown={};tx.filter(t=>t.type==='expense').forEach(t=>breakdown[t.category]=(breakdown[t.category]||0)+t.amount);
+ const pairs=Object.entries(breakdown).sort((a,b)=>b[1]-a[1]);$('categoryBreakdown').innerHTML=pairs.length?pairs.slice(0,6).map(([c,v])=>`<div class="categoryrow"><div style="flex:1"><div style="display:flex;justify-content:space-between;gap:8px"><span>${esc(c)}</span><strong>${euro(v)}</strong></div><div class="bar"><span style="width:${expense?Math.min(100,v/expense*100):0}%"></span></div></div></div>`).join(''):'<div class="empty">Aún no hay gastos registrados.</div>';
+ const sorted=[...tx].sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);$('recent').innerHTML=sorted.slice(0,4).map(txHtml).join('')||'<div class="empty">Añade tu primer movimiento.</div>';$('allTransactions').innerHTML=sorted.map(txHtml).join('')||'<div class="empty">Todavía no hay movimientos en este mes.</div>';
+ $('debtList').innerHTML=state.debts.map((d,i)=>`<div class="card"><div class="pill">Deuda ${i+1}</div><h3>${esc(d.name)}</h3><div class="metric">${euro(d.amount)}</div><div class="muted">Pago mensual previsto: ${euro(d.payment)}</div><div class="actions"><button class="btn secondary" onclick="payDebt('${d.id}')">Registrar pago</button><button class="btn light" onclick="deleteDebt('${d.id}')">Eliminar</button></div></div>`).join('')||'<div class="card empty">Añade tus deudas para seguir su evolución.</div>';
+ $('goalList').innerHTML=state.goals.map(g=>{let pct=Math.min(100,g.target?g.saved/g.target*100:0);return `<div class="card"><div class="sectionhead"><h3>${esc(g.name)}</h3><span class="pill">${Math.round(pct)}%</span></div><div style="display:flex;justify-content:space-between;gap:8px"><strong>${euro(g.saved)}</strong><span class="muted">de ${euro(g.target)}</span></div><div class="bar"><span style="width:${pct}%"></span></div><div class="actions"><button class="btn secondary" onclick="addSaving('${g.id}')">Añadir ahorro</button><button class="btn light" onclick="deleteGoal('${g.id}')">Eliminar</button></div></div>`}).join('')||'<div class="card empty">Crea un objetivo, por ejemplo, fondo de emergencia.</div>';
+}
+function txHtml(t){return `<div class="item"><div class="ico">${t.type==='income'?'↗':'↘'}</div><div class="itemmain"><strong>${esc(t.description||t.category)}</strong><div class="muted">${esc(t.category)} · ${t.date}</div></div><div class="amount ${t.type}">${t.type==='income'?'+':'−'}${euro(t.amount)}</div><button class="smallbtn" aria-label="Eliminar movimiento" onclick="deleteTx('${t.id}')">×</button></div>`}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openMovement(){showTab('transactions');$('movementFormCard').classList.remove('hidden');$('date').value=today();fillCategories();$('type').focus()}
+function fillCategories(){const type=$('type').value;const list=cats[type];$('category').innerHTML=list.map(c=>`<option>${esc(c)}</option>`).join('')}
+$('type').onchange=fillCategories;
+$('quickAdd').onclick=openMovement;$('newMovement').onclick=openMovement;$('cancelMovement').onclick=()=>$('movementFormCard').classList.add('hidden');
+$('movementForm').onsubmit=e=>{e.preventDefault();const amount=moneyNum($('amount').value);if(amount<=0)return;state.transactions.push({id:crypto.randomUUID(),type:$('type').value,amount,category:$('category').value,date:$('date').value,description:$('description').value.trim()});$('movementForm').reset();$('movementFormCard').classList.add('hidden');save();toast('Movimiento guardado')};
+window.deleteTx=id=>{if(confirm('¿Eliminar este movimiento?')){state.transactions=state.transactions.filter(t=>t.id!==id);save();toast('Movimiento eliminado')}};
+$('newDebt').onclick=()=>$('debtFormCard').classList.remove('hidden');$('cancelDebt').onclick=()=>$('debtFormCard').classList.add('hidden');
+$('debtForm').onsubmit=e=>{e.preventDefault();state.debts.push({id:crypto.randomUUID(),name:$('debtName').value.trim(),amount:moneyNum($('debtAmount').value),payment:moneyNum($('debtPayment').value)});$('debtForm').reset();$('debtFormCard').classList.add('hidden');save();toast('Deuda guardada')};
+window.deleteDebt=id=>{if(confirm('¿Eliminar esta deuda?')){state.debts=state.debts.filter(d=>d.id!==id);save()}};
+window.payDebt=id=>{const d=state.debts.find(x=>x.id===id);if(!d)return;const raw=prompt(`¿Cuánto has pagado a "${d.name}"? Pendiente: ${euro(d.amount)}`);if(raw===null)return;const val=moneyNum(raw);if(!(val>0)){toast('Introduce un importe válido');return}d.amount=Math.max(0,moneyNum(d.amount-val));state.transactions.push({id:crypto.randomUUID(),type:'expense',amount:val,category:'Deudas',date:today(),description:'Pago deuda: '+d.name});save();toast('Pago registrado')};
+$('newGoal').onclick=()=>$('goalFormCard').classList.remove('hidden');$('cancelGoal').onclick=()=>$('goalFormCard').classList.add('hidden');
+$('goalForm').onsubmit=e=>{e.preventDefault();state.goals.push({id:crypto.randomUUID(),name:$('goalName').value.trim(),target:moneyNum($('goalTarget').value),saved:moneyNum($('goalSaved').value)});$('goalForm').reset();$('goalFormCard').classList.add('hidden');save();toast('Objetivo guardado')};
+window.deleteGoal=id=>{if(confirm('¿Eliminar este objetivo?')){state.goals=state.goals.filter(g=>g.id!==id);save()}};
+window.addSaving=id=>{const g=state.goals.find(x=>x.id===id);const raw=prompt(`¿Cuánto quieres añadir a "${g.name}"?`);if(raw===null)return;const v=moneyNum(raw);if(v<=0)return toast('Introduce un importe válido');g.saved=moneyNum(g.saved+v);save();toast('Ahorro actualizado')};
+function exportData(){const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),...state},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mi-dinero-en-orden-copia.json';a.click();URL.revokeObjectURL(a.href);toast('Copia preparada')}
+$('exportBtn').onclick=exportData;$('exportBtn2').onclick=exportData;$('importBtn').onclick=()=>$('importFile').click();
+$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!Array.isArray(d.transactions)||!Array.isArray(d.debts)||!Array.isArray(d.goals))throw Error();if(confirm('¿Sustituir los datos actuales por la copia seleccionada?')){state={transactions:d.transactions,debts:d.debts,goals:d.goals};save();toast('Copia importada')}}catch(err){alert('No se ha podido importar: el archivo no parece una copia válida.')}e.target.value=''};
+$('resetBtn').onclick=()=>{if(confirm('Esto borrará todos los datos guardados en este prototipo. ¿Continuar?')){state={transactions:[],debts:[],goals:[]};save();toast('Datos borrados')}};
+function initMonths(){const sel=$('monthSelect'),now=new Date();for(let i=0;i<18;i++){const d=new Date(now.getFullYear(),now.getMonth()-i,1);const val=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;const label=d.toLocaleDateString('es-ES',{month:'long',year:'numeric'});const o=document.createElement('option');o.value=val;o.textContent=label.charAt(0).toUpperCase()+label.slice(1);sel.append(o)}sel.value=selectedMonth;sel.onchange=()=>{selectedMonth=sel.value;render()}}
+initMonths();fillCategories();$('date').value=today();render();
+</script><script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script></body></html>
